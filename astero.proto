@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+// Actually structs (not messages)
+
+message Coord {
+    float x = 1;
+    float y = 2;
+}
+
+message Asteroid {
+    Coord pos = 1;
+    Coord velocity = 2;
+    float facing = 3;
+    float rvel = 4;
+    float life = 5;
+}
+
+
+// Actual messages
+
+message Join {
+    string nickname = 1;
+}
+
+message JoinAck {
+    int32 id = 1;
+    Coord pos = 2;
+}
+
+message OtherJoined {
+    int32 id = 1;
+    string nickname = 2;
+    Coord pos = 3;
+}
+
+
+message Leave {}
+
+message OtherLeft {
+    int32 id = 1;
+}
+
+
+message SpawnAsteroid {
+    repeated Asteroid asteroids = 1;
+}
+
+
+message Heartbeat {}
