@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+package astero;
+
 // Actually structs (not messages)
 
 message Coord {
