@@ -48,10 +48,6 @@ message OtherLeft {
 
 
 message Spawn {
-    enum Kind {
-        UNKNOWN = 0;
-        ASTEROID = 1;
-    }
     oneof entity {
         Asteroids asteroids = 1;
     }
@@ -64,15 +60,6 @@ message Heartbeat {}
 // Message wrapper
 
 message Message {
-    enum Kind {
-        UNKNOWN = 0;
-        JOIN = 1;
-        JOIN_ACK = 2;
-        OTHER_JOINED = 3;
-        LEAVE = 4;
-        OTHER_LEFT = 5;
-        SPAWN_ASTEROID = 6;
-    }
     oneof msg {
         Join join = 1;
         JoinAck join_ack = 2;
