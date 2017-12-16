@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package astero;
 
-// Actually structs (not messages)
+// Helper structs (not messages)
 
 message Coord {
     float x = 1;
@@ -15,6 +15,10 @@ message Asteroid {
     float facing = 3;
     float rvel = 4;
     float life = 5;
+}
+
+message Asteroids {
+    repeated Asteroid asteroids = 1;
 }
 
 
@@ -43,9 +47,38 @@ message OtherLeft {
 }
 
 
-message SpawnAsteroid {
-    repeated Asteroid asteroids = 1;
+message Spawn {
+    enum Kind {
+        UNKNOWN = 0;
+        ASTEROID = 1;
+    }
+    oneof entity {
+        Asteroids asteroids = 1;
+    }
 }
 
 
 message Heartbeat {}
+
+
+// Message wrapper
+
+message Message {
+    enum Kind {
+        UNKNOWN = 0;
+        JOIN = 1;
+        JOIN_ACK = 2;
+        OTHER_JOINED = 3;
+        LEAVE = 4;
+        OTHER_LEFT = 5;
+        SPAWN_ASTEROID = 6;
+    }
+    oneof msg {
+        Join join = 1;
+        JoinAck join_ack = 2;
+        OtherJoined other_joined = 3;
+        Leave leave = 4;
+        OtherLeft other_left = 5;
+        Spawn spawn = 6;
+    }
+}
