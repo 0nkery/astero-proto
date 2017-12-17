@@ -59,13 +59,18 @@ message Heartbeat {}
 
 // Message wrapper
 
-message Message {
+message Client {
     oneof msg {
         Join join = 1;
-        JoinAck join_ack = 2;
-        OtherJoined other_joined = 3;
-        Leave leave = 4;
-        OtherLeft other_left = 5;
-        Spawn spawn = 6;
+        Leave leave = 2;
+    }
+}
+
+message Server {
+    oneof msg {
+        JoinAck join_ack = 1;
+        OtherJoined other_joined = 2;
+        OtherLeft other_left = 3;
+        Spawn spawn = 4;
     }
 }
