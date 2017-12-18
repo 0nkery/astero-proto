@@ -10,11 +10,12 @@ message Coord {
 }
 
 message Asteroid {
-    Coord pos = 1;
-    Coord velocity = 2;
-    float facing = 3;
-    float rvel = 4;
-    float life = 5;
+    int32 id = 1;
+    Coord pos = 2;
+    Coord velocity = 3;
+    float facing = 4;
+    float rvel = 5;
+    float life = 6;
 }
 
 message Asteroids {
