@@ -16,7 +16,7 @@ message Asteroid {
 }
 
 message Asteroids {
-    repeated Asteroid asteroids = 1;
+    map<int32, Asteroid> entities = 1;
 }
 
 
