@@ -1,20 +1,18 @@
-syntax = "proto3";
-
 package astero;
 
 // Helper structs (not messages)
 
 message Coord {
-    float x = 1;
-    float y = 2;
+    required float x = 1;
+    required float y = 2;
 }
 
 message Asteroid {
-    Coord pos = 1;
-    Coord velocity = 2;
-    float facing = 3;
-    float rvel = 4;
-    float life = 5;
+    required Coord pos = 1;
+    required Coord velocity = 2;
+    required float facing = 3;
+    required float rvel = 4;
+    required float life = 5;
 }
 
 message Asteroids {
@@ -25,25 +23,25 @@ message Asteroids {
 // Actual messages
 
 message Join {
-    string nickname = 1;
+    required string nickname = 1;
 }
 
 message JoinAck {
-    int32 id = 1;
-    Coord pos = 2;
+    required int32 id = 1;
+    required Coord pos = 2;
 }
 
 message OtherJoined {
-    int32 id = 1;
-    string nickname = 2;
-    Coord pos = 3;
+    required int32 id = 1;
+    required string nickname = 2;
+    required Coord pos = 3;
 }
 
 
 message Leave {}
 
 message OtherLeft {
-    int32 id = 1;
+    required int32 id = 1;
 }
 
 
