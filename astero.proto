@@ -61,6 +61,7 @@ message Client {
     oneof msg {
         Join join = 1;
         Leave leave = 2;
+        Heartbeat heartbeat = 3;
     }
 }
 
@@ -70,5 +71,6 @@ message Server {
         OtherJoined other_joined = 2;
         OtherLeft other_left = 3;
         Spawn spawn = 4;
+        Heartbeat heartbeat = 5;
     }
 }
