@@ -18,7 +18,7 @@ message Asteroid {
 }
 
 message Asteroids {
-    map<int32, Asteroid> entities = 1;
+    map<uint32, Asteroid> entities = 1;
 }
 
 
@@ -29,12 +29,12 @@ message Join {
 }
 
 message JoinAck {
-    required int32 id = 1;
+    required uint32 id = 1;
     required Coord pos = 2;
 }
 
 message OtherJoined {
-    required int32 id = 1;
+    required uint32 id = 1;
     required string nickname = 2;
     required Coord pos = 3;
 }
@@ -43,7 +43,7 @@ message OtherJoined {
 message Leave {}
 
 message OtherLeft {
-    required int32 id = 1;
+    required uint32 id = 1;
 }
 
 
