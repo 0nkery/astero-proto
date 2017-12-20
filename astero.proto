@@ -12,8 +12,6 @@ message Coord {
 message Asteroid {
     required Coord pos = 1;
     required Coord velocity = 2;
-    required float facing = 3;
-    required float rvel = 4;
     required float life = 5;
 }
 
