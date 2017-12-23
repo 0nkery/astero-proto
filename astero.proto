@@ -73,7 +73,7 @@ message Spawn {
 }
 
 message SimUpdates {
-    repeated SimUpdates updates = 1;
+    repeated SimUpdate updates = 1;
 }
 
 
