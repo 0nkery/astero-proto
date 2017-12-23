@@ -37,6 +37,12 @@ message SimUpdate {
     required Body body = 3;
 }
 
+enum InputEvent {
+    UNKNOWN = 0;
+    TURN_START = 1;
+    TURN_STOP = 2;
+}
+
 
 // Actual messages
 
@@ -76,6 +82,10 @@ message SimUpdates {
     repeated SimUpdate updates = 1;
 }
 
+message Input {
+    required InputEvent event = 1;
+}
+
 
 // Message wrapper
 
@@ -84,6 +94,7 @@ message Client {
         Join join = 1;
         Leave leave = 2;
         Heartbeat heartbeat = 3;
+        Input input = 4;
     }
 }
 
