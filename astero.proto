@@ -27,7 +27,7 @@ message Asteroids {
 }
 
 enum Entity {
-    UNKNOWN = 0;
+    UNKNOWN_ENTITY = 0;
     ASTEROID = 1;
 }
 
@@ -38,7 +38,7 @@ message SimUpdate {
 }
 
 enum InputEvent {
-    UNKNOWN = 0;
+    UNKNOWN_EVENT = 0;
     TURN_START = 1;
     TURN_STOP = 2;
 }
