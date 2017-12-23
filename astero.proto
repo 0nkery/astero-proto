@@ -21,6 +21,22 @@ message Asteroids {
     map<uint32, Asteroid> entities = 1;
 }
 
+message Body {
+    required Coord pos = 1;
+    required Coord velocity = 2;
+}
+
+enum Entity {
+    UNKNOWN = 0;
+    ASTEROID = 1;
+}
+
+message SimUpdate {
+    required Entity entity = 1;
+    required uint32 id = 2;
+    required Body body = 3;
+}
+
 
 // Actual messages
 
@@ -47,14 +63,18 @@ message OtherLeft {
 }
 
 
+message Heartbeat {}
+
+
 message Spawn {
     oneof entity {
         Asteroids asteroids = 1;
     }
 }
 
-
-message Heartbeat {}
+message SimUpdates {
+    repeated SimUpdates updates = 1;
+}
 
 
 // Message wrapper
@@ -72,7 +92,8 @@ message Server {
         JoinAck join_ack = 1;
         OtherJoined other_joined = 2;
         OtherLeft other_left = 3;
-        Spawn spawn = 4;
-        Heartbeat heartbeat = 5;
+        Heartbeat heartbeat = 4;
+        Spawn spawn = 5;
+        SimUpdates sim_updates = 6;
     }
 }
