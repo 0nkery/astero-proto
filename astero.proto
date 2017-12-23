@@ -76,7 +76,7 @@ message SimUpdates {
 }
 
 message Input {
-    optional float turn = 1;
+    optional int32 turn = 1;
 }
 
 
