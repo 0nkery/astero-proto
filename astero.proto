@@ -9,19 +9,21 @@ message Coord {
     required float y = 2;
 }
 
-message Asteroid {
+message Body {
     required Coord pos = 1;
-    required Coord velocity = 2;
-    required float life = 5;
+    required Coord vel = 2;
+    optional float rot = 3;
+    optional float rvel = 4;
+    optional float size = 5;
+}
+
+message Asteroid {
+    required Body body = 1;
+    required float life = 2;
 }
 
 message Asteroids {
     map<uint32, Asteroid> entities = 1;
-}
-
-message Body {
-    required Coord pos = 1;
-    required Coord velocity = 2;
 }
 
 enum Entity {
@@ -44,13 +46,13 @@ message Join {
 
 message JoinAck {
     required uint32 id = 1;
-    required Coord pos = 2;
+    required Body body = 2;
 }
 
 message OtherJoined {
     required uint32 id = 1;
     required string nickname = 2;
-    required Coord pos = 3;
+    required Body body = 3;
 }
 
 
