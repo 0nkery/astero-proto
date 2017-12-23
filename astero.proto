@@ -37,13 +37,6 @@ message SimUpdate {
     required Body body = 3;
 }
 
-enum InputEvent {
-    UNKNOWN_EVENT = 0;
-    TURN_START = 1;
-    TURN_STOP = 2;
-}
-
-
 // Actual messages
 
 message Join {
@@ -83,7 +76,7 @@ message SimUpdates {
 }
 
 message Input {
-    required InputEvent event = 1;
+    optional float turn = 1;
 }
 
 
