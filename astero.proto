@@ -79,6 +79,11 @@ message Input {
     optional sint32 turn = 1;
 }
 
+message OtherInput {
+    required uint32 id = 1;
+    required Input input = 2;
+}
+
 
 // Message wrapper
 
@@ -99,5 +104,6 @@ message Server {
         Heartbeat heartbeat = 4;
         Spawn spawn = 5;
         SimUpdates sim_updates = 6;
+        OtherInput other_input = 7;
     }
 }
