@@ -29,6 +29,7 @@ message Asteroids {
 enum Entity {
     UNKNOWN_ENTITY = 0;
     ASTEROID = 1;
+    PLAYER = 2;
 }
 
 message SimUpdate {
