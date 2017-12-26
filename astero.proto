@@ -65,6 +65,10 @@ message OtherLeft {
 
 message Heartbeat {}
 
+message LatencyMeasure {
+    required uint32 timestamp = 1;
+}
+
 
 message Spawn {
     oneof entity {
@@ -95,6 +99,7 @@ message Client {
         Leave leave = 2;
         Heartbeat heartbeat = 3;
         Input input = 4;
+	LatencyMeasure latency = 5;
     }
 }
 
@@ -107,5 +112,6 @@ message Server {
         Spawn spawn = 5;
         SimUpdates sim_updates = 6;
         OtherInput other_input = 7;
+	LatencyMeasure latency = 8;
     }
 }
