@@ -67,7 +67,7 @@ message OtherLeft {
 message Heartbeat {}
 
 message LatencyMeasure {
-    required uint32 timestamp = 1;
+    required uint64 timestamp = 1;
 }
 
 
