@@ -22,13 +22,17 @@ message Asteroid {
     required float life = 2;
 }
 
+message Asteroids {
+    map<uint32, Asteroid> entities = 1;
+}
+
 message Shot {
     required Body body = 1;
     required float ttl = 2;
 }
 
-message Asteroids {
-    map<uint32, Asteroid> entities = 1;
+message Shots {
+    map<uint32, Shot> entities = 1;
 }
 
 enum Entity {
@@ -79,8 +83,8 @@ message LatencyMeasure {
 message Spawn {
     oneof entity {
         Asteroids asteroids = 1;
+	Shots shots = 2;
     }
-    optional Shot shot = 2;
 }
 
 message SimUpdates {
