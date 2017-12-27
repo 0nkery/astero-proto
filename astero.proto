@@ -113,5 +113,6 @@ message Server {
         Spawn spawn = 5;
         SimUpdates sim_updates = 6;
         OtherInput other_input = 7;
+	LatencyMeasure latency = 8;
     }
 }
