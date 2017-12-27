@@ -47,15 +47,15 @@ message SimUpdate {
     required Body body = 3;
 }
 
-message AsteroidPlayerCollision {
-    required uint32 asteroid_id = 1;
-    required uint32 player_id = 2;
-    required float player_life = 3;
+message EntityLifeUpdate {
+    required Entity entity = 1;
+    required uint32 id = 2;
+    required float life = 3;
 }
 
 message GameplayEvent {
     oneof event {
-        AsteroidPlayerCollision ap_collision = 1;
+        EntityLifeUpdate life_update = 1;
     }
 }
 
