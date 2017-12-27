@@ -48,9 +48,9 @@ message SimUpdate {
 }
 
 message AsteroidPlayerCollision {
-    required asteroid_id = 1;
-    required player_id = 2;
-    required player_life = 3;
+    required uint32 asteroid_id = 1;
+    required uint32 player_id = 2;
+    required float player_life = 3;
 }
 
 message GameplayEvent {
@@ -60,7 +60,7 @@ message GameplayEvent {
 }
 
 message GameplayEvents {
-    repeated GameplayEvent events;
+    repeated GameplayEvent events = 1;
 }
 
 
@@ -142,6 +142,6 @@ message Server {
         SimUpdates sim_updates = 6;
         OtherInput other_input = 7;
 	LatencyMeasure latency = 8;
-	GameplayEvents = 9;
+	GameplayEvents gameplay_events = 9;
     }
 }
