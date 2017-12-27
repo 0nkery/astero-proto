@@ -80,7 +80,7 @@ message Spawn {
     oneof entity {
         Asteroids asteroids = 1;
     }
-    optional Shot shot = 1;
+    optional Shot shot = 2;
 }
 
 message SimUpdates {
