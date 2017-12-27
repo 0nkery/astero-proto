@@ -22,6 +22,11 @@ message Asteroid {
     required float life = 2;
 }
 
+message Shot {
+    required Body body = 1;
+    required float ttl = 2;
+}
+
 message Asteroids {
     map<uint32, Asteroid> entities = 1;
 }
@@ -75,6 +80,7 @@ message Spawn {
     oneof entity {
         Asteroids asteroids = 1;
     }
+    optional Shot shot = 1;
 }
 
 message SimUpdates {
