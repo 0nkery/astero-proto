@@ -47,6 +47,23 @@ message SimUpdate {
     required Body body = 3;
 }
 
+message AsteroidPlayerCollision {
+    required asteroid_id = 1;
+    required player_id = 2;
+    required player_life = 3;
+}
+
+message GameplayEvent {
+    oneof event {
+        AsteroidPlayerCollision ap_collision = 1;
+    }
+}
+
+message GameplayEvents {
+    repeated GameplayEvent events;
+}
+
+
 // Actual messages
 
 message Join {
@@ -125,5 +142,6 @@ message Server {
         SimUpdates sim_updates = 6;
         OtherInput other_input = 7;
 	LatencyMeasure latency = 8;
+	GameplayEvents = 9;
     }
 }
