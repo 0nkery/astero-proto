@@ -73,7 +73,6 @@ message Join {
 message JoinAck {
     required uint32 id = 1;
     required Body body = 2;
-    required LatencyMeasure latency = 3;
 }
 
 message OtherJoined {
