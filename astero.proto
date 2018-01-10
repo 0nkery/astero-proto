@@ -65,6 +65,10 @@ message Update {
     }
 }
 
+message ManyUpdates {
+    repeated Update updates = 1;
+}
+
 message JoinPayload {
     required string nickname = 1;
 }
@@ -88,6 +92,6 @@ message Server {
     oneof Msg {
         Create create = 1;
         Destroy destroy = 2;
-        Update update = 3;
+        ManyUpdates updates = 3;
     }
 }
