@@ -2,7 +2,8 @@ syntax = "proto2";
 
 package astero;
 
-// Helper structs (not messages)
+
+// Helper structs.
 
 message Coord {
     required float x = 1;
@@ -18,12 +19,9 @@ message Body {
 }
 
 message Asteroid {
-    required Body body = 1;
-    required float life = 2;
-}
-
-message Asteroids {
-    map<uint32, Asteroid> entities = 1;
+    required uint32 id = 1;
+    required Body body = 2;
+    optional float life = 3;
 }
 
 message Shot {
@@ -31,8 +29,27 @@ message Shot {
     required float ttl = 2;
 }
 
-message Shots {
-    map<uint32, Shot> entities = 1;
+// Data about joined player (from server).
+message Player {
+    required uint32 id = 1;
+    required Body body = 2;
+    optional string nickname = 3;
+}
+
+message PlayerUpdate {
+    required uint32 id = 1;
+    optional Body body = 2;
+    optional float life = 3;
+}
+
+// Actual messages.
+
+message Create {
+    oneof Entity {
+        Player player = 1;
+        Asteroid asteroid = 2;
+        Shot shot = 3;
+    }
 }
 
 enum Entity {
@@ -41,66 +58,20 @@ enum Entity {
     PLAYER = 2;
 }
 
-message SimUpdate {
-    required Entity entity = 1;
-    required uint32 id = 2;
-    required Body body = 3;
+message Destroy {
+    required uint32 id = 1;
+    required Entity entity = 2;
 }
 
-message EntityLifeUpdate {
-    required Entity entity = 1;
-    required uint32 id = 2;
-    required float life = 3;
-}
-
-message GameplayEvent {
-    oneof event {
-        EntityLifeUpdate life_update = 1;
+message Update {
+    oneof Entity {
+        PlayerUpdate player = 1;
+        Asteroid asteroid = 2;
     }
 }
 
-
-// Actual messages
-
-message Join {
+message JoinPayload {
     required string nickname = 1;
-}
-
-message JoinAck {
-    required uint32 id = 1;
-    required Body body = 2;
-}
-
-message OtherJoined {
-    required uint32 id = 1;
-    required string nickname = 2;
-    required Body body = 3;
-}
-
-
-message Leave {}
-
-message OtherLeft {
-    required uint32 id = 1;
-}
-
-
-message Heartbeat {}
-
-message LatencyMeasure {
-    required uint64 timestamp = 1;
-}
-
-
-message Spawn {
-    oneof entity {
-        Asteroids asteroids = 1;
-	    Shots shots = 2;
-    }
-}
-
-message SimUpdates {
-    repeated SimUpdate updates = 1;
 }
 
 message Input {
@@ -109,37 +80,19 @@ message Input {
     optional bool fire = 3;
 }
 
-message OtherInput {
-    required uint32 id = 1;
-    required Input input = 2;
-}
 
-message GameplayEvents {
-    repeated GameplayEvent events = 1;
-}
-
-// Message wrapper
+// Wrappers.
 
 message Client {
-    oneof msg {
-        Join join = 1;
-        Leave leave = 2;
-        Heartbeat heartbeat = 3;
-        Input input = 4;
-	    LatencyMeasure latency = 5;
+    oneof Msg {
+        Input input = 1;
     }
 }
 
 message Server {
-    oneof msg {
-        JoinAck join_ack = 1;
-        OtherJoined other_joined = 2;
-        OtherLeft other_left = 3;
-        Heartbeat heartbeat = 4;
-        Spawn spawn = 5;
-        SimUpdates sim_updates = 6;
-        OtherInput other_input = 7;
-	    LatencyMeasure latency = 8;
-	    GameplayEvents gameplay_events = 9;
+    oneof Msg {
+        Create create = 1;
+        Destroy destroy = 2;
+        Update update = 3;
     }
 }
