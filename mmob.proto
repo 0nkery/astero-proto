@@ -1,0 +1,44 @@
+syntax = "proto2";
+
+package mmob;
+
+
+message JoinGame {
+    optional bytes payload = 1;
+}
+
+message JoinAck {
+    optional bytes payload = 1;
+}
+
+message LeaveGame {}
+
+message Heartbeat {}
+
+message LatencyMeasure {
+    required uint64 timestamp = 1;
+}
+
+// Any game-specific message (can be serialized in any way).
+message Proxied {
+    required bytes msg = 1;
+}
+
+message Client {
+    oneof Msg {
+        JoinGame join = 1;
+        LeaveGame leave = 2;
+        Heartbeat heartbeat = 3;
+        LatencyMeasure latency_measure = 4;
+        Proxied proxied = 5;
+    }
+}
+
+message Server {
+    oneof Msg {
+        JoinAck join_ack = 1;
+        Heartbeat heartbeat = 2;
+        LatencyMeasure latency_measure = 3;
+        Proxied proxied = 4;
+    }
+}
