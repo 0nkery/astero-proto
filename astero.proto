@@ -34,12 +34,7 @@ message Player {
     required uint32 id = 1;
     required Body body = 2;
     optional string nickname = 3;
-}
-
-message PlayerUpdate {
-    required uint32 id = 1;
-    optional Body body = 2;
-    optional float life = 3;
+    optional float life = 4;
 }
 
 // Actual messages.
@@ -65,7 +60,7 @@ message Destroy {
 
 message Update {
     oneof Entity {
-        PlayerUpdate player = 1;
+        Player player = 1;
         Asteroid asteroid = 2;
     }
 }
