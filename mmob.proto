@@ -25,7 +25,7 @@ message Proxied {
 }
 
 message Client {
-    oneof Msg {
+    oneof msg {
         JoinGame join = 1;
         LeaveGame leave = 2;
         Heartbeat heartbeat = 3;
@@ -35,7 +35,7 @@ message Client {
 }
 
 message Server {
-    oneof Msg {
+    oneof msg {
         JoinAck join_ack = 1;
         Heartbeat heartbeat = 2;
         LatencyMeasure latency_measure = 3;

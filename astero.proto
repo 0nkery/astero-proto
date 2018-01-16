@@ -83,13 +83,13 @@ message Input {
 // Wrappers.
 
 message Client {
-    oneof Msg {
+    oneof msg {
         Input input = 1;
     }
 }
 
 message Server {
-    oneof Msg {
+    oneof msg {
         Create create = 1;
         Destroy destroy = 2;
         ManyUpdates updates = 3;
