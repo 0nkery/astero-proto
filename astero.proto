@@ -48,7 +48,7 @@ message Create {
 }
 
 enum Entity {
-    UNKNOWN_ENTITY = 0;
+    UNKNOWN = 0;
     ASTEROID = 1;
     PLAYER = 2;
 }
