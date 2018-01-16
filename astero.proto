@@ -40,7 +40,7 @@ message Player {
 // Actual messages.
 
 message Create {
-    oneof Entity {
+    oneof entity {
         Player player = 1;
         Asteroid asteroid = 2;
         Shot shot = 3;
@@ -59,7 +59,7 @@ message Destroy {
 }
 
 message Update {
-    oneof Entity {
+    oneof entity {
         Player player = 1;
         Asteroid asteroid = 2;
     }
