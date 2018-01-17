@@ -65,8 +65,8 @@ message Update {
     }
 }
 
-message ManyUpdates {
-    repeated Update updates = 1;
+message UpdateList {
+    repeated Update update_list = 1;
 }
 
 message JoinPayload {
@@ -92,6 +92,6 @@ message Server {
     oneof msg {
         Create create = 1;
         Destroy destroy = 2;
-        ManyUpdates updates = 3;
+        UpdateList list = 3;
     }
 }
