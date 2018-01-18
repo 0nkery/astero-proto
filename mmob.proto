@@ -17,6 +17,7 @@ message Heartbeat {}
 
 message LatencyMeasure {
     required uint64 timestamp = 1;
+    optional uint64 server_timestamp = 2;
 }
 
 // Any game-specific message (can be serialized in any way).
