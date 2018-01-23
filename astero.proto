@@ -47,15 +47,8 @@ message Create {
     }
 }
 
-enum Entity {
-    UNKNOWN = 0;
-    ASTEROID = 1;
-    PLAYER = 2;
-}
-
 message Destroy {
     required uint32 id = 1;
-    required Entity entity = 2;
 }
 
 message Update {
