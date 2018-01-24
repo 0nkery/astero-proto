@@ -35,6 +35,7 @@ message Player {
     required Body body = 2;
     optional string nickname = 3;
     optional float life = 4;
+    optional uint32 last_handled_input = 5;
 }
 
 // Actual messages.
@@ -59,7 +60,8 @@ message Update {
 }
 
 message UpdateList {
-    repeated Update update_list = 1;
+    required uint64 timestamp = 1;
+    repeated Update update_list = 2;
 }
 
 message JoinPayload {
@@ -67,9 +69,10 @@ message JoinPayload {
 }
 
 message Input {
-    optional sint32 turn = 1;
-    optional sint32 accel = 2;
-    optional bool fire = 3;
+    required uint32 sequence_num = 1;
+    optional sint32 turn = 2;
+    optional sint32 accel = 3;
+    optional bool fire = 4;
 }
 
 
