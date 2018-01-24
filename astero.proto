@@ -35,6 +35,7 @@ message Player {
     required Body body = 2;
     optional string nickname = 3;
     optional float life = 4;
+    optional uint64 last_acknowledged_input = 5;
 }
 
 // Actual messages.
