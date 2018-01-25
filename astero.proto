@@ -61,7 +61,7 @@ message Update {
 
 message UpdateList {
     required uint64 timestamp = 1;
-    repeated Update update_list = 2;
+    map<uint32, Update> updates = 2;
 }
 
 message JoinPayload {
