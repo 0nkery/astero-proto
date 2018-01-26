@@ -36,6 +36,7 @@ message Player {
     optional string nickname = 3;
     optional float life = 4;
     optional uint32 last_handled_input = 5;
+    optional bool shot_confirmed = 6;
 }
 
 // Actual messages.
@@ -73,6 +74,7 @@ message Input {
     optional sint32 turn = 2;
     optional sint32 accel = 3;
     optional bool fire = 4;
+    optional Body body_then = 5;
 }
 
 
