@@ -37,6 +37,7 @@ message Player {
     optional float life = 4;
     optional uint32 last_handled_input = 5;
     optional bool shot_confirmed = 6;
+    optional float current_fire_timeout = 7;
 }
 
 // Actual messages.
